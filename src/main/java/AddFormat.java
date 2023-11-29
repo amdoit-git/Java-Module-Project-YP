@@ -1,47 +1,42 @@
 import java.util.Formatter;
 import java.util.Locale;
 public class AddFormat {
-    public static String format(int total){
+    public static String format(int num, String s1, String s2, String s3, boolean print_num){
 
-        int count = total%100;
+        int count = num%100;
 
         String result;
 
         if (count >= 5 && count <= 20) {
-            result = "товаров";
+            result = s3;
         } else {
             count = count % 10;
             if (count == 1) {
-                result = "товар";
+                result = s1;
             } else if (count >= 2 && count <= 4) {
-                result = "товара";
+                result = s2;
             } else {
-                result = "товаров";
+                result = s3;
             }
         }
 
-        return String.format("%d %s", total, result);
+        if(print_num){
+            result = String.format("%d %s", num, result);
+        }
+
+        return result;
     }
 
-    public static String format(double price){
+    public static String rub(double price){
 
-        int count = ((int)Math.floor(price))%100;
+        int num = (int)Math.floor(price);
 
-        String result;
-
-        if (count >= 5 && count <= 20) {
-            result = "рублей";
-        } else {
-            count = count % 10;
-            if (count == 1) {
-                result = "рубль";
-            } else if (count >= 2 && count <= 4) {
-                result = "рубля";
-            } else {
-                result = "рублей";
-            }
-        }
+        String result = format(num, "рубль", "рубля", "рублей", false);
 
         return String.format("%.2f %s", price, result);
+    }
+
+    public static String rub(float price){
+        return rub((double)price);
     }
 }

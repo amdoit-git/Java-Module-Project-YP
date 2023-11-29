@@ -29,6 +29,11 @@ public class ProductItem {
 
                 price = scanner.nextDouble();
 
+                if(!scanner.nextLine().trim().equals("")){
+                    System.out.println("Введите только число в формате 0.00 без дополнительных знаков");
+                    continue;
+                }
+
                 if (price > 0) {
                     break;
                 }
@@ -45,10 +50,10 @@ public class ProductItem {
 
 
     public String getNameAndPrice(){
-         return  name + " " + AddFormat.format(price);
+         return  name + " " + AddFormat.rub(price);
     }
 
     public String getPrice(){
-        return  AddFormat.format(price);
+        return  AddFormat.rub(price);
     }
 }
