@@ -1,5 +1,3 @@
-import java.util.Formatter;
-import java.util.Locale;
 public class AddFormat {
     public static String format(int num, String s1, String s2, String s3, boolean print_num){
 
